@@ -75,12 +75,11 @@ local function low_mask(width)
 end
 
 
-local function foldl(f, init, ...)
-  local fst, rest = ...
+local function foldl(f, init, fst, ...)
   if (fst == nil) then 
     return init
   end
-  return foldl(f, f(init, fst), rest)
+  return foldl(f, f(init, fst), ...)
 end
 
 
