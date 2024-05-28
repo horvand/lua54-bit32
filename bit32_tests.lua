@@ -57,3 +57,18 @@ do test 'rshift'
   end
 ok() end
 
+do test 'band'
+  assert(bit32.band() == 0xFFFFFFFF)
+  assert(bit32.band(1, 2) == 1 & 2)
+  assert(bit32.band(1, 2, 4) == 1 & 2 & 4)
+  assert(bit32.band(1, 2, 4, 8) == 1 & 2 & 4 & 8)
+  assert(bit32.band(1 | 2, 2 | 4) == 2)
+ok() end
+
+do test 'bor'
+  assert(bit32.bor() == 0)
+  assert(bit32.bor(1, 2) == 1 | 2)
+  assert(bit32.bor(1, 2, 4) == 1 | 2 | 4)
+  assert(bit32.bor(1, 2, 4, 8) == 1 | 2 | 4 | 8)
+  assert(bit32.bor(1 | 2, 2 | 4) == 1 | 2 | 4)
+ok() end
